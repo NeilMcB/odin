@@ -3,3 +3,9 @@
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/NeilMcB/odin/main.svg)](https://results.pre-commit.ci/latest/github/NeilMcB/odin/main)
 
 Monorepo for tracking progress through [The Odin Project](https://www.theodinproject.com/dashboard).
+
+## TODO
+
+1. Once setup with `npm`, run [HTMLHint](https://www.npmjs.com/package/htmlhint)
+and [W3C Validator](https://www.npmjs.com/package/w3c-html-validator) locally
+and as CI checks; currently just running via VSCode extensions.
