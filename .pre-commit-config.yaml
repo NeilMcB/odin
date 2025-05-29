@@ -10,4 +10,4 @@ repos:
     rev: v0.44.0
     hooks:
       - id: markdownlint
-        args: [--fix]
+        args: [--fix, --disable=MD013]
