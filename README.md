@@ -4,6 +4,12 @@
 
 Monorepo for tracking progress through [The Odin Project](https://www.theodinproject.com/dashboard).
 
+## Structure
+
+Mostly still TBD.
+
+Projects can be found in the `projects` folder.
+
 ## TODO
 
 1. Once setup with `npm`, run [HTMLHint](https://www.npmjs.com/package/htmlhint)
