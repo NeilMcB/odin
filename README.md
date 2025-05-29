@@ -10,6 +10,8 @@ Mostly still TBD.
 
 Projects can be found in the `projects` folder.
 
+Exercise repos are "forked" into directiories under `exercises`.
+
 ## TODO
 
 1. Once setup with `npm`, run [HTMLHint](https://www.npmjs.com/package/htmlhint) and [W3C Validator](https://www.npmjs.com/package/w3c-html-validator) locally and as CI checks; currently just running via VSCode extensions.
