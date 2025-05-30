@@ -1,0 +1,14 @@
+.old-reg-plate {
+    background-color: black;
+    color: white;
+}
+
+.new-reg-plate {
+    background-color: yellow;
+    color: black;
+}
+
+.old-reg-plate, .new-reg-plate {
+    font-size: 28px;
+    font-family: Helvetica, 'Times New Roman', sans-serif;
+}
