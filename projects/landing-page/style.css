@@ -2,4 +2,26 @@
 
 body {
     font-family: Roboto, sans-serif;
+    margin: 0;
+}
+
+.header {
+    background-color: #1F2937;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 128px;
+}
+
+.header h2 {
+    font-size: 24px;
+    color: #F9FAF8;
+}
+
+.header ul {
+    display: flex;
+    list-style-type: none;
+    font-size: 18px;
+    color: #E5E7EB;
+    gap: 16px;
 }
