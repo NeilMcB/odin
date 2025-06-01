@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@200;400;700&display=swap');
 
 body {
     font-family: Roboto, sans-serif;
     margin: 0;
 }
 
-.header, .hero, .content {
+.header, .hero, .content, .testimonial {
     padding-left: 128px;
     padding-right: 128px;
 }
@@ -113,4 +113,36 @@ body {
     border-radius: 5px;
     height: 150px;
     width: 150px;
+}
+
+.testimonial {
+    background-color: #E5E7EB;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-container {
+    flex: 0 1 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial p {
+    margin: 0;
+}
+
+.testimonial-copy {
+    align-self: center;
+    text-align: center;
+    font-size: 36px;
+    font-style: italic;
+    font-weight: 100;
+}
+
+.testimonial-attribution {
+    align-self: flex-end;
+    font-weight: bold;
 }
