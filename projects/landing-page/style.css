@@ -5,23 +5,77 @@ body {
     margin: 0;
 }
 
-.header {
+.header, .hero {
     background-color: #1F2937;
+    padding-left: 128px;
+    padding-right: 128px;
+}
+
+.header h2, .hero h1 {
+    color: #F9FAF8;
+}
+
+.header ul, .hero p {
+    font-size: 18px;
+    color: #E5E7EB;
+}
+
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 128px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .header h2 {
     font-size: 24px;
-    color: #F9FAF8;
 }
 
 .header ul {
     display: flex;
     list-style-type: none;
-    font-size: 18px;
-    color: #E5E7EB;
     gap: 16px;
+}
+
+.hero {
+    display: flex;
+    gap: 48px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.hero-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 24px;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E5E7EB;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 900;
+}
+
+.hero h1, .hero p {
+    margin: 0;
+}
+
+.hero button {
+    all: unset;
+    background-color: #3882F6;
+    color: #F9FAF8;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 4px;
 }
