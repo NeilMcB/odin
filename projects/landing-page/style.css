@@ -5,7 +5,7 @@ body {
     margin: 0;
 }
 
-.header, .hero, .content, .testimonial, .cta {
+.header, .hero, .content, .testimonial, .cta, .footer {
     padding-left: 128px;
     padding-right: 128px;
 }
@@ -15,7 +15,14 @@ body {
     padding-bottom: 64px;
 }
 
-.header, .hero {
+.header, .footer {
+    display: flex;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.header, .hero, .footer {
     background-color: #1F2937;
 }
 
@@ -29,11 +36,7 @@ body {
 }
 
 .header {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
 }
 
 .header h2 {
@@ -183,5 +186,10 @@ body {
     border: 2px solid #F9FAF8;
     padding: 4px 12px;
     border-radius: 4px;
+    color: #F9FAF8;
+}
+
+.footer {
+    justify-content: center;
     color: #F9FAF8;
 }
