@@ -18,3 +18,5 @@ Exercise repos are "forked" into directiories under `exercises`.
     1. [HTMLHint](https://www.npmjs.com/package/htmlhint)
     1. [W3C Validator](https://www.npmjs.com/package/w3c-html-validator)
     1. [stylelint](https://www.npmjs.com/package/stylelint)
+    1. [eslint](https://eslint.org/)
+2. Run tests with CI
