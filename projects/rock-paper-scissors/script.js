@@ -14,13 +14,6 @@ const Result = Object.freeze(
     }
 );
 
-const Winner = Object.freeze(
-    {
-        USER: "USER",
-        COMPUTER: "COMPUTER",
-    }
-);
-
 const NUMBER_OF_ROUNDS = 5;
 
 
@@ -34,7 +27,9 @@ function playGame() {
         const userChoice = getUserChoice();
         const computerChoice = getComputerChoice();
 
-        switch (playRound(userChoice, computerChoice)) {
+        const roundResult = playRound(userChoice, computerChoice)
+
+        switch (roundResult) {
             case Result.USER_WINS:
                 userScore++;
                 break;
@@ -44,10 +39,9 @@ function playGame() {
         }
     }
 
-    const winner = userScore > computerScore ? Winner.USER : Winner.COMPUTER
-    console.log(`Final score: User ${userScore} - ${computerScore} Computer. ${winner} wins!`);
+    const finalResult = getFinalResult(userScore, computerScore);
+    console.log(`Final score: User ${userScore} - ${computerScore} Computer. ${finalResult.replace("_", " ")}!`);
 }
-
 
 
 function getComputerChoice() {
@@ -64,7 +58,7 @@ function getUserChoice() {
 
 function playRound(userChoice, computerChoice) {
     userChoice = userChoice.toUpperCase();  // Allow users to input in any case
-    const result = getResult(userChoice, computerChoice)
+    const result = getRoundResult(userChoice, computerChoice)
 
     switch (result) {
         case Result.USER_WINS:
@@ -81,7 +75,7 @@ function playRound(userChoice, computerChoice) {
     return result
 }
 
-function getResult(userChoice, computerChoice) {
+function getRoundResult(userChoice, computerChoice) {
     if (userChoice === computerChoice) return Result.DRAW;
 
     switch (userChoice) {
@@ -95,4 +89,10 @@ function getResult(userChoice, computerChoice) {
             if (computerChoice === Move.PAPER) return Result.USER_WINS;
             else return Result.COMPUTER_WINS;
     }
+}
+
+function getFinalResult(userScore, computerScore) {
+    if (userScore > computerScore) return Result.USER_WINS;
+    if (computerScore > userScore) return Result.COMPUTER_WINS;
+    return Result.DRAW;
 }
