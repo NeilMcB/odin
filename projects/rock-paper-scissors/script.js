@@ -6,6 +6,9 @@ const Move = Object.freeze(
     }
 );
 
+let userScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
     randomValue = Math.random();
 
