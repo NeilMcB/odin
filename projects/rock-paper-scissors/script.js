@@ -14,8 +14,41 @@ const Result = Object.freeze(
     }
 );
 
-let userScore = 0;
-let computerScore = 0;
+const Winner = Object.freeze(
+    {
+        USER: "USER",
+        COMPUTER: "COMPUTER",
+    }
+);
+
+const NUMBER_OF_ROUNDS = 5;
+
+
+console.log("Invoke `playGame()` to play.");
+
+function playGame() {
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let round = 0; round < NUMBER_OF_ROUNDS; round++) {
+        const userChoice = getUserChoice();
+        const computerChoice = getComputerChoice();
+
+        switch (playRound(userChoice, computerChoice)) {
+            case Result.USER_WINS:
+                userScore++;
+                break;
+            case Result.COMPUTER_WINS:
+                computerScore++;
+                break;
+        }
+    }
+
+    const winner = userScore > computerScore ? Winner.USER : Winner.COMPUTER
+    console.log(`Final score: User ${userScore} - ${computerScore} Computer. ${winner} wins!`);
+}
+
+
 
 function getComputerChoice() {
     randomValue = Math.random();
@@ -36,16 +69,16 @@ function playRound(userChoice, computerChoice) {
     switch (result) {
         case Result.USER_WINS:
             console.log(`You win! ${userChoice} beats ${computerChoice}`);
-            userScore++;
             break;
         case Result.DRAW:
             console.log(`Draw! You both played ${userChoice}`);
             break;
         case Result.COMPUTER_WINS:
             console.log(`You lose! ${computerChoice} beats ${userChoice}`);
-            computerScore++;
             break;
     }
+
+    return result
 }
 
 function getResult(userChoice, computerChoice) {
