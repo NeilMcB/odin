@@ -13,3 +13,7 @@ function getComputerChoice() {
     if (randomValue < 2/3) return Move.PAPER;
     return Move.SCISSORS;
 }
+
+function getUserChoice() {
+    return prompt(`Select one of: ${Object.values(Move).join(", ")}`)
+}
