@@ -12,6 +12,8 @@ Projects can be found in the `projects` folder.
 
 Exercise repos are "forked" into directiories under `exercises`.
 
+A readymade boilerplate page with a linked script for exploring JavaScript is available under `scratch`.
+
 ## TODO
 
 1. Once setup with `npm`, run the following checks locally and with CI; currently just running via VSCode extensions:
