@@ -14,12 +14,43 @@ const Result = Object.freeze(
     }
 );
 
-const NUMBER_OF_ROUNDS = 5;
 
+const roundCounterDisplay = document.querySelector(".round-counter .count");
+const NUMBER_OF_ROUNDS = 5;
+const INITIAL_ROUND_COUNT = 1;
+let roundCount = INITIAL_ROUND_COUNT;
 
 const userScoreDisplay = document.querySelector(".user-score .score");
+const INITIAL_USER_SCORE = 0;
+let userScore = INITIAL_USER_SCORE;
+
 const computerScoreDisplay = document.querySelector(".computer-score .score");
-const roundCounterDisplay = document.querySelector(".round-counter .count");
+const INITIAL_COMPUTER_SCORE = 0;
+let computerScore = INITIAL_COMPUTER_SCORE;
+
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener(
+    "click",
+    () => {
+        reset();
+        refreshDisplay();
+    }
+);
+
+
+function reset() {
+    roundCount = INITIAL_ROUND_COUNT;
+    userScore = INITIAL_USER_SCORE;
+    computerScore = INITIAL_COMPUTER_SCORE;
+}
+
+function refreshDisplay() {
+    roundCounterDisplay.textContent = roundCount;
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+}
+
+
 
 const gameButtons = document.querySelector(".game-buttons");
 gameButtons.addEventListener(
@@ -31,43 +62,26 @@ gameButtons.addEventListener(
         const roundResult = playRound(userChoice, computerChoice);
         switch (roundResult) {
             case Result.USER_WINS:
-                incrementCountDisplay(userScoreDisplay);
+                userScore++;
                 break;
             case Result.COMPUTER_WINS:
-                incrementCountDisplay(computerScoreDisplay);
+                computerScore++
                 break;
         }
 
-        if (getRoundCount() < NUMBER_OF_ROUNDS) incrementCountDisplay(roundCounterDisplay);
-        else {
-            const finalResult = getFinalResult(getUserScore(), getComputerScore());
-            alert(finalResult);
-            reset();
-        }
+        if (roundCount < NUMBER_OF_ROUNDS) roundCount++;
+        else endGame();
+
+        refreshDisplay();
     }
 )
 
-const resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", reset);
-
-
-function reset() {
-    roundCounterDisplay.textContent = 1;
-    userScoreDisplay.textContent = 0;
-    computerScoreDisplay.textContent = 0;
+function endGame(userScore, computerScore) {
+    const finalResult = getFinalResult(userScore, computerScore);
+    alert(finalResult);
+    reset();
 }
 
-function getRoundCount() {
-    return Number.parseInt(roundCounterDisplay.textContent);
-}
-
-function getUserScore() {
-    return Number.parseInt(userScoreDisplay.textContent);
-}
-
-function getComputerScore() {
-    return Number.parseInt(computerScoreDisplay.textContent);
-}
 
 function getComputerChoice() {
     randomValue = Math.random();
@@ -122,6 +136,3 @@ function getFinalResult(userScore, computerScore) {
     return Result.DRAW;
 }
 
-function incrementCountDisplay(countDisplayNode) {
-    countDisplayNode.textContent = Number.parseInt(countDisplayNode.textContent) + 1;
-}
