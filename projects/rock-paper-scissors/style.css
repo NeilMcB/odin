@@ -19,6 +19,10 @@ body {
     gap: 24px;
 }
 
+.round-counter {
+    font-size: 24px;
+}
+
 .scoreboard {
     display: flex;
     justify-content: space-between;
