@@ -17,31 +17,27 @@ const Result = Object.freeze(
 const NUMBER_OF_ROUNDS = 5;
 
 
-console.log("Invoke `playGame()` to play.");
+const userScoreDisplay = document.querySelector(".user-score .score");
+const computerScoreDisplay = document.querySelector(".computer-score .score");
 
-function playGame() {
-    let userScore = 0;
-    let computerScore = 0;
-
-    for (let round = 0; round < NUMBER_OF_ROUNDS; round++) {
-        const userChoice = getUserChoice();
+const gameButtons = document.querySelector(".game-buttons");
+gameButtons.addEventListener(
+    "click",
+    event => {
+        const userChoice = event.target.id;
         const computerChoice = getComputerChoice();
 
-        const roundResult = playRound(userChoice, computerChoice)
-
+        const roundResult = playRound(userChoice, computerChoice);
         switch (roundResult) {
             case Result.USER_WINS:
-                userScore++;
+                incrementScoreDisplay(userScoreDisplay);
                 break;
             case Result.COMPUTER_WINS:
-                computerScore++;
+                incrementScoreDisplay(computerScoreDisplay);
                 break;
         }
     }
-
-    const finalResult = getFinalResult(userScore, computerScore);
-    console.log(`Final score: User ${userScore} - ${computerScore} Computer. ${finalResult.replace("_", " ")}!`);
-}
+)
 
 
 function getComputerChoice() {
@@ -95,4 +91,8 @@ function getFinalResult(userScore, computerScore) {
     if (userScore > computerScore) return Result.USER_WINS;
     if (computerScore > userScore) return Result.COMPUTER_WINS;
     return Result.DRAW;
+}
+
+function incrementScoreDisplay(scoreDisplayNode) {
+    scoreDisplayNode.textContent = Number.parseInt(scoreDisplayNode.textContent) + 1;
 }
