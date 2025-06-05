@@ -37,6 +37,8 @@ resetButton.addEventListener(
     }
 );
 
+const roundOutcomeDisplay = document.querySelector(".round-outcome");
+
 
 function reset() {
     roundCount = INITIAL_ROUND_COUNT;
@@ -70,7 +72,7 @@ gameButtons.addEventListener(
         }
 
         if (roundCount < NUMBER_OF_ROUNDS) roundCount++;
-        else endGame();
+        else endGame(userScore, computerScore);
 
         refreshDisplay();
     }
@@ -101,13 +103,13 @@ function playRound(userChoice, computerChoice) {
 
     switch (result) {
         case Result.USER_WINS:
-            console.log(`You win! ${userChoice} beats ${computerChoice}`);
+            roundOutcomeDisplay.textContent = `You win! ${userChoice} beats ${computerChoice}`;
             break;
         case Result.DRAW:
-            console.log(`Draw! You both played ${userChoice}`);
+            roundOutcomeDisplay.textContent = `Draw! You both played ${userChoice}`;
             break;
         case Result.COMPUTER_WINS:
-            console.log(`You lose! ${computerChoice} beats ${userChoice}`);
+            roundOutcomeDisplay.textContent = `You lose! ${computerChoice} beats ${userChoice}`;
             break;
     }
 
