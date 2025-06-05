@@ -14,33 +14,72 @@ const Result = Object.freeze(
     }
 );
 
+
+const roundCounterDisplay = document.querySelector(".round-counter .count");
 const NUMBER_OF_ROUNDS = 5;
+const INITIAL_ROUND_COUNT = 1;
+let roundCount = INITIAL_ROUND_COUNT;
+
+const userScoreDisplay = document.querySelector(".user-score .score");
+const INITIAL_USER_SCORE = 0;
+let userScore = INITIAL_USER_SCORE;
+
+const computerScoreDisplay = document.querySelector(".computer-score .score");
+const INITIAL_COMPUTER_SCORE = 0;
+let computerScore = INITIAL_COMPUTER_SCORE;
+
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener(
+    "click",
+    () => {
+        reset();
+        refreshDisplay();
+    }
+);
 
 
-console.log("Invoke `playGame()` to play.");
+function reset() {
+    roundCount = INITIAL_ROUND_COUNT;
+    userScore = INITIAL_USER_SCORE;
+    computerScore = INITIAL_COMPUTER_SCORE;
+}
 
-function playGame() {
-    let userScore = 0;
-    let computerScore = 0;
+function refreshDisplay() {
+    roundCounterDisplay.textContent = roundCount;
+    userScoreDisplay.textContent = userScore;
+    computerScoreDisplay.textContent = computerScore;
+}
 
-    for (let round = 0; round < NUMBER_OF_ROUNDS; round++) {
-        const userChoice = getUserChoice();
+
+
+const gameButtons = document.querySelector(".game-buttons");
+gameButtons.addEventListener(
+    "click",
+    event => {
+        const userChoice = event.target.id;
         const computerChoice = getComputerChoice();
 
-        const roundResult = playRound(userChoice, computerChoice)
-
+        const roundResult = playRound(userChoice, computerChoice);
         switch (roundResult) {
             case Result.USER_WINS:
                 userScore++;
                 break;
             case Result.COMPUTER_WINS:
-                computerScore++;
+                computerScore++
                 break;
         }
-    }
 
+        if (roundCount < NUMBER_OF_ROUNDS) roundCount++;
+        else endGame();
+
+        refreshDisplay();
+    }
+)
+
+function endGame(userScore, computerScore) {
     const finalResult = getFinalResult(userScore, computerScore);
-    console.log(`Final score: User ${userScore} - ${computerScore} Computer. ${finalResult.replace("_", " ")}!`);
+    alert(finalResult);
+    reset();
 }
 
 
@@ -96,3 +135,4 @@ function getFinalResult(userScore, computerScore) {
     if (computerScore > userScore) return Result.COMPUTER_WINS;
     return Result.DRAW;
 }
+
