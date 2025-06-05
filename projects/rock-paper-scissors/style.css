@@ -16,6 +16,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 32px;
+    gap: 24px;
 }
 
 .scoreboard {
@@ -45,14 +46,17 @@ body {
     text-align: right;
 }
 
-.buttons {
+.game-buttons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    margin-top: 32px;
 }
 
-.buttons button {
+.game-buttons button {
     width: 64px;
+}
+
+button#reset {
+    width: 100%;
 }
