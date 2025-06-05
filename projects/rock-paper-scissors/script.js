@@ -70,7 +70,7 @@ gameButtons.addEventListener(
         }
 
         if (roundCount < NUMBER_OF_ROUNDS) roundCount++;
-        else endGame();
+        else endGame(userScore, computerScore);
 
         refreshDisplay();
     }
