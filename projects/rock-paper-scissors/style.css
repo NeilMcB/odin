@@ -64,3 +64,14 @@ body {
 button#reset {
     width: 100%;
 }
+
+.round-outcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    height: 24px;
+    background-color: whitesmoke;
+    width: 100%;
+    margin: 0;
+}
