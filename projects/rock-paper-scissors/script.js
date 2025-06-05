@@ -19,6 +19,7 @@ const NUMBER_OF_ROUNDS = 5;
 
 const userScoreDisplay = document.querySelector(".user-score .score");
 const computerScoreDisplay = document.querySelector(".computer-score .score");
+const roundCounterDisplay = document.querySelector(".round-counter .count");
 
 const gameButtons = document.querySelector(".game-buttons");
 gameButtons.addEventListener(
@@ -30,15 +31,43 @@ gameButtons.addEventListener(
         const roundResult = playRound(userChoice, computerChoice);
         switch (roundResult) {
             case Result.USER_WINS:
-                incrementScoreDisplay(userScoreDisplay);
+                incrementCountDisplay(userScoreDisplay);
                 break;
             case Result.COMPUTER_WINS:
-                incrementScoreDisplay(computerScoreDisplay);
+                incrementCountDisplay(computerScoreDisplay);
                 break;
+        }
+
+        if (getRoundCount() < NUMBER_OF_ROUNDS) incrementCountDisplay(roundCounterDisplay);
+        else {
+            const finalResult = getFinalResult(getUserScore(), getComputerScore());
+            alert(finalResult);
+            reset();
         }
     }
 )
 
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", reset);
+
+
+function reset() {
+    roundCounterDisplay.textContent = 1;
+    userScoreDisplay.textContent = 0;
+    computerScoreDisplay.textContent = 0;
+}
+
+function getRoundCount() {
+    return Number.parseInt(roundCounterDisplay.textContent);
+}
+
+function getUserScore() {
+    return Number.parseInt(userScoreDisplay.textContent);
+}
+
+function getComputerScore() {
+    return Number.parseInt(computerScoreDisplay.textContent);
+}
 
 function getComputerChoice() {
     randomValue = Math.random();
@@ -93,6 +122,6 @@ function getFinalResult(userScore, computerScore) {
     return Result.DRAW;
 }
 
-function incrementScoreDisplay(scoreDisplayNode) {
-    scoreDisplayNode.textContent = Number.parseInt(scoreDisplayNode.textContent) + 1;
+function incrementCountDisplay(countDisplayNode) {
+    countDisplayNode.textContent = Number.parseInt(countDisplayNode.textContent) + 1;
 }
