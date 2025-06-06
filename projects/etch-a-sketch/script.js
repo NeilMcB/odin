@@ -9,6 +9,8 @@ const CELL_CLASS_NAME = "cell";
 const ROW_COUNT = 16;
 const COLUMN_COUNT = 16;
 
+resetGrid(ROW_COUNT, COLUMN_COUNT);
+
 function resetGrid(rowCount, columnCount) {
     container.replaceChildren();  // remove all existing cells from the grid
 
@@ -25,5 +27,3 @@ function resetGrid(rowCount, columnCount) {
         container.appendChild(row);
     }
 }
-
-resetGrid(ROW_COUNT, COLUMN_COUNT);
