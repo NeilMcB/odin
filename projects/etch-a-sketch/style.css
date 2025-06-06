@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: min(80vw, 80vh);
+    width: min(80vw, 80vh);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.row {
+    display: flex;
+    justify-content: stretch;
+
+    flex: 1;
+}
+
+.cell {
+    flex: 1;
+
+    background-color: whitesmoke;
+    border: 1px solid white;
+}
