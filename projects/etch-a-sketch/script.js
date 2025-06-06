@@ -1,4 +1,4 @@
-const container = document.querySelector(".container");
+const sketchBoard = document.querySelector(".sketch-board");
 
 const ROW_ELEMENT_TYPE = "div";
 const CELL_ELEMENT_TYPE = "div";
@@ -12,7 +12,7 @@ const COLUMN_COUNT = 16;
 resetGrid(ROW_COUNT, COLUMN_COUNT);
 
 function resetGrid(rowCount, columnCount) {
-    container.replaceChildren();  // remove all existing cells from the grid
+    sketchBoard.replaceChildren();  // remove all existing cells from the grid
 
     for (let i = 0; i < rowCount; i++) {
         row = document.createElement(ROW_ELEMENT_TYPE);
@@ -24,11 +24,11 @@ function resetGrid(rowCount, columnCount) {
             row.appendChild(cell);
         }
 
-        container.appendChild(row);
+        sketchBoard.appendChild(row);
     }
 }
 
-container.addEventListener(
+sketchBoard.addEventListener(
     "mouseover",
     e => e.target.classList.add("sketched"),
 );
