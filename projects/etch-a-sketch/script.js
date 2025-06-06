@@ -27,3 +27,8 @@ function resetGrid(rowCount, columnCount) {
         container.appendChild(row);
     }
 }
+
+container.addEventListener(
+    "mouseover",
+    e => e.target.classList.add("sketched"),
+);
