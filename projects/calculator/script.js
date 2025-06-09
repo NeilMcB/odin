@@ -33,8 +33,13 @@ container.addEventListener(
     "click",
     event => {
         if (event.target.classList.contains("digit")) {
-            rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
-            display.textContent = rightOperand;
+            leftOperand = Number.parseInt(String(leftOperand ?? "") + event.target.id);
+            display.textContent = leftOperand;
+        }
+
+        if (event.target.classList.contains("operator")) {
+            operator = getOperator(event.target);
+            display.textContent = `${leftOperand} ${getOperatorSymbol(operator)}`;
         }
     },
 );
@@ -51,3 +56,16 @@ const getOperatorSymbol = function (operator) {
             return "÷";
     }
 };
+
+const getOperator = function (button) {
+    switch (button.id) {
+        case "add":
+            return add;
+        case "subtract":
+            return subtract;
+        case "multiply":
+            return multiply;
+        case "divide":
+            return divide;
+    }
+}
