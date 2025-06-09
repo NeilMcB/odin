@@ -60,6 +60,12 @@ container.addEventListener(
             operator = undefined;
         }
 
+        if (event.target.classList.contains("clear")) {
+            leftOperand = undefined;
+            operator = undefined;
+            rightOperand = undefined;
+        }
+
         refreshDisplay();
     },
 );
