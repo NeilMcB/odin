@@ -1,3 +1,7 @@
+let leftOperand;
+let rightOperand;
+let operator;
+
 const add = function (augend, addend) {
     return augend + addend;
 };
