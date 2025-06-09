@@ -2,6 +2,7 @@ let leftOperand;
 let rightOperand;
 let operator;
 
+
 const add = function (augend, addend) {
     return augend + addend;
 };
@@ -16,4 +17,9 @@ const multiply = function (muliplier, multiplicand) {
 
 const divide = function (dividend, divisor) {
     return dividend / divisor;
+};
+
+
+const operate = function (leftOperand, operation, rightOperand) {
+    return operation(leftOperand, rightOperand);
 };
