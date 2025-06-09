@@ -41,6 +41,11 @@ container.addEventListener(
             operator = getOperator(event.target);
             display.textContent = `${leftOperand} ${getOperatorSymbol(operator)}`;
         }
+
+        if (leftOperand !== undefined && operator !== undefined && event.target.classList.contains("digit")) {
+            rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
+            display.textContent = `${leftOperand} ${getOperatorSymbol(operator)} ${rightOperand}`;
+        }
     },
 );
 
