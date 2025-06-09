@@ -41,6 +41,19 @@ button:active {
     background-color: #004080;
 }
 
+button.contrast {
+    background-color: #FFC107;
+}
+
+button.contrast:hover {
+  background-color: #e0a800; /* Slightly darker golden shade */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button.contrast:active {
+  background-color: #c69500; /* Deeper, rich gold */
+}
+
 span {
     background-color: #f8f9fa;
     flex-grow: 1;
