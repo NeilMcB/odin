@@ -33,7 +33,8 @@ container.addEventListener(
     "click",
     event => {
         if (event.target.classList.contains("digit")) {
-            display.textContent = event.target.id;
+            rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
+            display.textContent = rightOperand;
         }
     },
 );
