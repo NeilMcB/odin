@@ -38,16 +38,26 @@ document.addEventListener("DOMContentLoaded", refreshDisplay);
 container.addEventListener(
     "click",
     event => {
-        if (operator === undefined && event.target.classList.contains("digit")) {
-            leftOperand = updateOperand(leftOperand, event.target);
+        if (event.target.classList.contains("digit")) {
+            if (operator === undefined) leftOperand = updateOperand(leftOperand, event.target);
+            else rightOperand = updateOperand(rightOperand, event.target);
         }
 
         if (leftOperand !== undefined && event.target.classList.contains("operator")) {
             operator = getOperator(event.target);
         }
 
-        if (leftOperand !== undefined && operator !== undefined && event.target.classList.contains("digit")) {
-            rightOperand = updateOperand(rightOperand, event.target);
+        if (
+            leftOperand !== undefined
+            && operator !== undefined
+            && rightOperand !== undefined
+            && event.target.id === "equals"
+        ) {
+            // Apply the operation, store the result ready for future operations...
+            leftOperand = operate(leftOperand, operator, rightOperand);
+            // ...and clear the memory ready for future operations.
+            rightOperand = undefined;
+            operator = undefined;
         }
 
         refreshDisplay();
