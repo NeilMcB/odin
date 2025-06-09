@@ -39,7 +39,7 @@ container.addEventListener(
     "click",
     event => {
         if (operator === undefined && event.target.classList.contains("digit")) {
-            leftOperand = Number.parseInt(String(leftOperand ?? "") + event.target.id);
+            leftOperand = updateOperand(leftOperand, event.target);
         }
 
         if (leftOperand !== undefined && event.target.classList.contains("operator")) {
@@ -47,12 +47,16 @@ container.addEventListener(
         }
 
         if (leftOperand !== undefined && operator !== undefined && event.target.classList.contains("digit")) {
-            rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
+            rightOperand = updateOperand(rightOperand, event.target);
         }
 
         refreshDisplay();
     },
 );
+
+const updateOperand = function (operand, digitButton) {
+    return Number.parseInt(String(operand ?? "") + digitButton.id);
+}
 
 const getOperatorSymbol = function (operator) {
     switch (operator) {
