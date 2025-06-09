@@ -23,3 +23,28 @@ const divide = function (dividend, divisor) {
 const operate = function (leftOperand, operation, rightOperand) {
     return operation(leftOperand, rightOperand);
 };
+
+
+
+const container = document.querySelector(".container");
+const display = document.querySelector(".content");
+
+container.addEventListener(
+    "click",
+    () => {
+        display.textContent = `${leftOperand ?? ""} ${getOperatorSymbol(operator) ?? ""} ${rightOperand ?? ""}`;
+    },
+);
+
+const getOperatorSymbol = function (operator) {
+    switch (operator) {
+        case add:
+            return "+";
+        case subtract:
+            return "−";
+        case multiply:
+            return "×";
+        case divide:
+            return "÷";
+    }
+};
