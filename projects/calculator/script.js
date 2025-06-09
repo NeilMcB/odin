@@ -34,18 +34,17 @@ container.addEventListener(
     event => {
         if (operator === undefined && event.target.classList.contains("digit")) {
             leftOperand = Number.parseInt(String(leftOperand ?? "") + event.target.id);
-            display.textContent = leftOperand;
         }
 
         if (leftOperand !== undefined && event.target.classList.contains("operator")) {
             operator = getOperator(event.target);
-            display.textContent = `${leftOperand} ${getOperatorSymbol(operator)}`;
         }
 
         if (leftOperand !== undefined && operator !== undefined && event.target.classList.contains("digit")) {
             rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
-            display.textContent = `${leftOperand} ${getOperatorSymbol(operator)} ${rightOperand}`;
         }
+
+        display.textContent = `${leftOperand ?? ""} ${getOperatorSymbol(operator) ?? ""} ${rightOperand ?? ""}`;
     },
 );
 
