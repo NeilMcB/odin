@@ -29,6 +29,12 @@ const operate = function (leftOperand, operation, rightOperand) {
 const container = document.querySelector(".container");
 const display = document.querySelector(".content");
 
+const refreshDisplay = function () {
+    display.textContent = `${leftOperand ?? ""} ${getOperatorSymbol(operator) ?? ""} ${rightOperand ?? ""}`;
+}
+
+document.addEventListener("DOMContentLoaded", refreshDisplay);
+
 container.addEventListener(
     "click",
     event => {
@@ -44,7 +50,7 @@ container.addEventListener(
             rightOperand = Number.parseInt(String(rightOperand ?? "") + event.target.id);
         }
 
-        display.textContent = `${leftOperand ?? ""} ${getOperatorSymbol(operator) ?? ""} ${rightOperand ?? ""}`;
+        refreshDisplay();
     },
 );
 
