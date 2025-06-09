@@ -37,7 +37,7 @@ container.addEventListener(
             display.textContent = leftOperand;
         }
 
-        if (event.target.classList.contains("operator")) {
+        if (leftOperand !== undefined && event.target.classList.contains("operator")) {
             operator = getOperator(event.target);
             display.textContent = `${leftOperand} ${getOperatorSymbol(operator)}`;
         }
