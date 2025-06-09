@@ -32,7 +32,7 @@ const display = document.querySelector(".content");
 container.addEventListener(
     "click",
     event => {
-        if (event.target.classList.contains("digit")) {
+        if (operator === undefined && event.target.classList.contains("digit")) {
             leftOperand = Number.parseInt(String(leftOperand ?? "") + event.target.id);
             display.textContent = leftOperand;
         }
