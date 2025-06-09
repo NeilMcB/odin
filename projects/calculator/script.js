@@ -31,8 +31,10 @@ const display = document.querySelector(".content");
 
 container.addEventListener(
     "click",
-    () => {
-        display.textContent = `${leftOperand ?? ""} ${getOperatorSymbol(operator) ?? ""} ${rightOperand ?? ""}`;
+    event => {
+        if (event.target.classList.contains("digit")) {
+            display.textContent = event.target.id;
+        }
     },
 );
 
