@@ -92,7 +92,7 @@ const handleClear = function () {
 }
 
 const updateOperand = function (operand, digitButton) {
-    return Number.parseInt(String(operand ?? "") + digitButton.id);
+    return Number.parseFloat(String(operand ?? "") + digitButton.id);
 }
 
 const getOperatorSymbol = function (operator) {
