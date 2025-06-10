@@ -42,6 +42,7 @@ container.addEventListener(
         else if (event.target.classList.contains("operator")) handleOperator(event.target);
         else if (event.target.id  === "equals") handleEquals();
         else if (event.target.classList.contains("clear")) handleClear();
+        else if (event.target.id === "decimal") alert("PREMIUM FEATURE");
 
         refreshDisplay();
     },
