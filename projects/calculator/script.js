@@ -63,6 +63,11 @@ const handleOperator = function (operatorButton) {
         return;
     }
 
+    if (rightOperand !== undefined) {
+        // If we have already built the right operand then execute the existing calculation first
+        handleEquals();
+    }
+
     operator = getOperator(operatorButton);
 }
 
