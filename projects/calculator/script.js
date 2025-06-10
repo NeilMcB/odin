@@ -38,37 +38,53 @@ document.addEventListener("DOMContentLoaded", refreshDisplay);
 container.addEventListener(
     "click",
     event => {
-        if (event.target.classList.contains("digit")) {
-            if (operator === undefined) leftOperand = updateOperand(leftOperand, event.target);
-            else rightOperand = updateOperand(rightOperand, event.target);
-        }
-
-        if (leftOperand !== undefined && event.target.classList.contains("operator")) {
-            operator = getOperator(event.target);
-        }
-
-        if (
-            leftOperand !== undefined
-            && operator !== undefined
-            && rightOperand !== undefined
-            && event.target.id === "equals"
-        ) {
-            // Apply the operation, store the result ready for future operations...
-            leftOperand = operate(leftOperand, operator, rightOperand);
-            // ...and clear the memory ready for future operations.
-            rightOperand = undefined;
-            operator = undefined;
-        }
-
-        if (event.target.classList.contains("clear")) {
-            leftOperand = undefined;
-            operator = undefined;
-            rightOperand = undefined;
-        }
+        if (event.target.classList.contains("digit")) handleDigit(event.target);
+        else if (event.target.classList.contains("operator")) handleOperator(event.target);
+        else if (event.target.id  === "equals") handleEquals();
+        else if (event.target.classList.contains("clear")) handleClear();
 
         refreshDisplay();
     },
 );
+
+const handleDigit = function (digitButton) {
+    // If no operator has been selected then we are constructing the left operand
+    if (operator === undefined) {
+        leftOperand = updateOperand(leftOperand, digitButton);
+    }
+    else {
+        rightOperand = updateOperand(rightOperand, digitButton);
+    }
+}
+
+const handleOperator = function (operatorButton) {
+    if (leftOperand === undefined) {
+        // If no left operand has been defined then we do nothing
+        return;
+    }
+
+    operator = getOperator(operatorButton);
+}
+
+const handleEquals = function () {
+    if (leftOperand === undefined || operator === undefined || rightOperand === undefined) {
+        // If we don't have all the required components of an operation then do nothing
+        return;
+    }
+
+    // Apply the operation, store the result ready for future operations...
+    leftOperand = operate(leftOperand, operator, rightOperand);
+    // ...and clear the memory ready for future operations.
+    rightOperand = undefined;
+    operator = undefined;
+}
+
+const handleClear = function () {
+    // Clear all global memory
+    leftOperand = undefined;
+    operator = undefined;
+    rightOperand = undefined;
+}
 
 const updateOperand = function (operand, digitButton) {
     return Number.parseInt(String(operand ?? "") + digitButton.id);
